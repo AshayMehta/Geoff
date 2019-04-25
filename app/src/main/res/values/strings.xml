@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Geoff</string>
+    <string name="todo">TODO</string>
+    <string name="intro_line">TODO</string>
+    <string name="things_to_ask">TODO</string>
+    <string name="take_to_geoff_button">TODO</string>
+    <string name="button">TODO</string>
+
+    <string name="title_activity_microphone">Microphone</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="test">TextView</string>
+    <string name="logoButton">TODO</string>
+    <string name="header">TODO</string>
+    <string name="backButton">TODO</string>
+</resources>
