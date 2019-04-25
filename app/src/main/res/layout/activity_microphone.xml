@@ -61,4 +61,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/back_button_prper" />
 
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="98dp"
+        android:layout_marginLeft="98dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="75dp"
+        android:ems="10"
+        android:hint="You will see your input here.."
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/backButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/microphone" />
+
+
 </android.support.constraint.ConstraintLayout>
