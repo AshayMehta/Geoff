@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.geoff">
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".microphone"></activity>
+        <activity android:name=".Default"></activity>
+        <activity android:name=".MusicPlaylist" />
+        <activity android:name=".ItalianRestaurants" />
+        <activity android:name=".HowToBoogie" />
+        <activity android:name=".WhoAreYou" />
+        <activity android:name=".microphone" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

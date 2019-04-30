@@ -15,30 +15,11 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="99dp"
         android:layout_marginRight="99dp"
-        android:layout_marginBottom="11dp"
         android:contentDescription="@string/intro_line"
-        app:layout_constraintBottom_toTopOf="@+id/imageView8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/intro_line" />
-
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="351dp"
-        android:layout_height="449dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginLeft="64dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="65dp"
-        android:layout_marginRight="65dp"
-        android:layout_marginBottom="106dp"
-        android:contentDescription="@string/things_to_ask"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7"
-        app:srcCompat="@drawable/things_to_ask" />
 
     <ImageButton
         android:id="@+id/button"
@@ -58,5 +39,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/take_to_geoff" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="365dp"
+        android:layout_height="616dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginTop="81dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginRight="23dp"
+        android:layout_marginBottom="34dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/body3"
+        android:contentDescription="@string/body" />
 
 </android.support.constraint.ConstraintLayout>

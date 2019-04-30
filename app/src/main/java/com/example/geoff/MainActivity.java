@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openGeoff() {
-        Intent intent = new Intent(this, microphone.class);
+        Intent intent = new Intent(this, HowToBoogie.class);
         startActivity(intent);
     }
 

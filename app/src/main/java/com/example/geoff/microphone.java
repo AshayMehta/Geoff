@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
+import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,16 +20,21 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Locale;
 
 public class microphone extends AppCompatActivity {
 
+    private static final int REQUEST_CODE_SPEECH_INPUT = 1000;
+
     private ImageButton button;
-    EditText editText;
-    SpeechRecognizer speechRecognizer;
-    Intent speechRecognizerIntent;
+    private ImageButton mic;
+    private TextView text;
+    private String input;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +45,6 @@ public class microphone extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_microphone);
 
-        checkPermission();
-
         button = (ImageButton) findViewById(R.id.backButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,102 +53,68 @@ public class microphone extends AppCompatActivity {
             }
         });
 
-        editText = findViewById(R.id.editText);
 
-        speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
+        text = findViewById(R.id.textview);
+        mic = findViewById((R.id.microphone));
 
-        speechRecognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
-
-        speechRecognizer.setRecognitionListener(new RecognitionListener() {
+        mic.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onReadyForSpeech(Bundle params) {
-
-            }
-
-            @Override
-            public void onBeginningOfSpeech() {
-
-            }
-
-            @Override
-            public void onRmsChanged(float rmsdB) {
-
-            }
-
-            @Override
-            public void onBufferReceived(byte[] buffer) {
-
-            }
-
-            @Override
-            public void onEndOfSpeech() {
-
-            }
-
-            @Override
-            public void onError(int error) {
-
-            }
-
-            @Override
-            public void onResults(Bundle results) {
-                ArrayList<String> matches = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
-
-                if (matches != null) {
-                    editText.setText(matches.get(0));
-                }
-            }
-
-            @Override
-            public void onPartialResults(Bundle partialResults) {
-
-            }
-
-            @Override
-            public void onEvent(int eventType, Bundle params) {
-
-            }
-        });
-
-        findViewById(R.id.microphone).setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_UP:
-                        speechRecognizer.stopListening();
-
-                        editText.setHint("You will see the input here");
-                        break;
-                    case MotionEvent.ACTION_DOWN:
-                        editText.setText("");
-                        editText.setHint("Listening...");
-                        speechRecognizer.startListening(speechRecognizerIntent);
-                        break;
-                }
-                return false;
+            public void onClick(View v) {
+                speak();
             }
         });
     }
+
+    private void speak() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "");
+
+
+        try {
+            startActivityForResult(intent, REQUEST_CODE_SPEECH_INPUT);
+        }
+        catch (Exception e) {
+            Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case REQUEST_CODE_SPEECH_INPUT: {
+                if (resultCode == RESULT_OK && null != data) {
+                    ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    text.setText(result.get(0));
+                }
+                break;
+            }
+        }
+        ArrayList<String> res = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+        input = res.get(0);
+    }
+
+    public void checkKeyWord() {
+        if (input.equals("who are you")) {
+            //load activity for who are you
+        } else if (input.equals("teach me how to boogie")) {
+            //load youtube video of someone boogie-ing
+        } else if (input.equals("show me the Italian restaurants on campus")) {
+            //load google search results for italian restaurants nearby
+        } else if (input.equals("please give me your music playlist")) {
+            //load link to geoff's music playlist
+        } else {
+            //load corner case activity
+        }
+    }
+
 
     public void openMain() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
-    private void checkPermission() {
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (!(ContextCompat.checkSelfPermission(this,
-                    Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED)) {
-                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                        Uri.parse("package:" + getPackageName()));
-                startActivity(intent);
-                finish();
-            }
-
-        }
-    }
 }
