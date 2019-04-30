@@ -7,7 +7,7 @@ import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-public class ItalianRestaurants extends AppCompatActivity {
+public class MusicPlaylist extends AppCompatActivity {
 
     private WebView webView;
 
@@ -17,10 +17,10 @@ public class ItalianRestaurants extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_italian_restaurants);
+        setContentView(R.layout.activity_music_playlist);
 
         webView = (WebView) findViewById(R.id.webview);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("https://www.google.com/search?q=italian+restaurants+near+me&oq=italian+restaurants+&aqs=chrome.1.69i57j0l5.6173j0j1&sourceid=chrome&ie=UTF-8");
+        webView.loadUrl("https://www.youtube.com/playlist?list=PLi9J8D4T_-pqdHPdZRW_1aEpKdHH4hy4O");
     }
 }
