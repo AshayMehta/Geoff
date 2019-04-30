@@ -17,9 +17,9 @@ public class ItalianRestaurants extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_italian_restaurants);
+        setContentView(R.layout.activity_italianrestaurants);
 
-        webView = (WebView) findViewById(R.id.webview);
+        webView = (WebView) findViewById(R.id.webview2);
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl("https://www.google.com/search?q=italian+restaurants+near+me&oq=italian+restaurants+&aqs=chrome.1.69i57j0l5.6173j0j1&sourceid=chrome&ie=UTF-8");
     }

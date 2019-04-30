@@ -17,9 +17,9 @@ public class HowToBoogie extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_how_to_boogie);
+        setContentView(R.layout.activity_howtoboogie);
 
-        webView = (WebView) findViewById(R.id.webview);
+        webView = (WebView) findViewById(R.id.webview1);
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl("https://www.youtube.com/watch?v=god7hAPv8f0");
     }

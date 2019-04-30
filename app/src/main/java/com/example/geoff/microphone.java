@@ -32,7 +32,7 @@ public class microphone extends AppCompatActivity {
 
     private ImageButton button;
     private ImageButton mic;
-    TextView text;
+    private TextView text;
     private String input;
 
 
