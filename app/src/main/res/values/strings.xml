@@ -13,4 +13,8 @@
     <string name="logoButton">TODO</string>
     <string name="header">TODO</string>
     <string name="backButton">TODO</string>
+    <string name="body">TODO</string>
+    <string name="body1">TODO</string>
+    <string name="textview">TextView</string>
+    <string name="textView">You will see your input here</string>
 </resources>
