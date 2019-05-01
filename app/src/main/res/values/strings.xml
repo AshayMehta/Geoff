@@ -17,4 +17,8 @@
     <string name="body1">TODO</string>
     <string name="textview">TextView</string>
     <string name="textView">You will see your input here</string>
+    <string name="errorimage">TODO</string>
+    <string name="errormsg">TODO</string>
+    <string name="errorbutton">TODO</string>
+    <string name="newbod">TODO</string>
 </resources>

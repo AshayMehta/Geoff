@@ -20,7 +20,7 @@ public class MusicPlaylist extends AppCompatActivity {
         setContentView(R.layout.activity_musicplaylist);
 
         webView = (WebView) findViewById(R.id.webview3);
-        webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("https://www.youtube.com/playlist?list=PLi9J8D4T_-pqdHPdZRW_1aEpKdHH4hy4O");
+        //webView.setWebViewClient(new WebViewClient());
+        webView.loadUrl("https://cs125.cs.illinois.edu/learn/");
     }
 }

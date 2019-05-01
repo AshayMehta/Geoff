@@ -1,6 +1,7 @@
 package com.example.geoff;
 
 import android.Manifest;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -74,9 +75,13 @@ public class microphone extends AppCompatActivity {
 
         try {
             startActivityForResult(intent, REQUEST_CODE_SPEECH_INPUT);
-        }
-        catch (Exception e) {
-            Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+        } catch(ActivityNotFoundException e) {
+            String appPackageName = "com.google.android.googlequicksearchbox";
+            try {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+            } catch (android.content.ActivityNotFoundException anfe) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+            }
         }
     }
 
@@ -89,25 +94,41 @@ public class microphone extends AppCompatActivity {
                 if (resultCode == RESULT_OK && null != data) {
                     ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     text.setText(result.get(0));
+                    ArrayList<String> res = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    input = res.get(0);
+                    checkKeyWord(input);
                 }
                 break;
             }
         }
-        ArrayList<String> res = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-        input = res.get(0);
+
     }
 
-    public void checkKeyWord() {
+    public void checkKeyWord(String input) {
         if (input.equals("who are you")) {
             //load activity for who are you
-        } else if (input.equals("teach me how to boogie")) {
+            Intent intent = new Intent(this, WhoAreYou.class);
+            startActivity(intent);
+        } else if (input.equals("teach me how to Boogie")) {
             //load youtube video of someone boogie-ing
+            Intent intent = new Intent(this, HowToBoogie.class);
+            startActivity(intent);
         } else if (input.equals("show me the Italian restaurants on campus")) {
             //load google search results for italian restaurants nearby
+            Intent intent = new Intent(this, ItalianRestaurants.class);
+            startActivity(intent);
         } else if (input.equals("please give me your music playlist")) {
             //load link to geoff's music playlist
+            Intent intent = new Intent(this, MusicPlaylist.class);
+            startActivity(intent);
+        } else if (input.equals("what's the weather")) {
+            //load link to weather
+            Intent intent = new Intent(this, Weather.class);
+            startActivity(intent);
         } else {
-            //load corner case activity
+            //load error case activity
+            Intent intent = new Intent(this, Default.class);
+            startActivity(intent);
         }
     }
 

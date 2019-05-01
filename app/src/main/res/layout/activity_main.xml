@@ -8,14 +8,16 @@
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="282dp"
-        android:layout_height="127dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="99dp"
-        android:layout_marginRight="99dp"
+        android:layout_width="271dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginLeft="46dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="94dp"
+        android:layout_marginRight="94dp"
+        android:layout_marginBottom="577dp"
         android:contentDescription="@string/intro_line"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,8 +25,8 @@
 
     <ImageButton
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="337dp"
+        android:layout_height="76dp"
         android:layout_marginStart="47dp"
         android:layout_marginLeft="47dp"
         android:layout_marginTop="633dp"
@@ -42,19 +44,19 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="365dp"
-        android:layout_height="616dp"
-        android:layout_marginStart="23dp"
-        android:layout_marginLeft="23dp"
-        android:layout_marginTop="81dp"
-        android:layout_marginEnd="23dp"
-        android:layout_marginRight="23dp"
-        android:layout_marginBottom="34dp"
+        android:layout_width="318dp"
+        android:layout_height="539dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginLeft="46dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginRight="47dp"
+        android:layout_marginBottom="72dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/body3"
-        android:contentDescription="@string/body" />
+        app:srcCompat="@drawable/newbod"
+        android:contentDescription="@string/newbod" />
 
 </android.support.constraint.ConstraintLayout>
